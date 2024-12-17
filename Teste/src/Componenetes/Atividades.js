@@ -113,7 +113,7 @@ const Atividades = [
 
       {
         titulo: "Nível 4",
-        status: true,
+        status: false,
         audios: [{}],
       },
     ],
@@ -125,7 +125,7 @@ const Atividades = [
       { titulo: "Nível 1", status: true },
       { titulo: "Nível 2", status: true },
       { titulo: "Nível 3", status: true },
-      { titulo: "Nível 4", status: true },
+      { titulo: "Nível 4", status: false },
     ],
   },
   {
@@ -134,7 +134,7 @@ const Atividades = [
     niveis: [
       { titulo: "Nível 1", status: false },
       { titulo: "Nível 2", status: false },
-      { titulo: "Nível 3", status: true },
+      { titulo: "Nível 3", status: false },
       { titulo: "Nível 4", status: false },
     ],
   },
@@ -142,10 +142,10 @@ const Atividades = [
     nome: "mais_agudo_ou_mais_grave",
     titulo: "Mais Agudo ou Mais Grave",
     niveis: [
-      { titulo: "Nível 1", status: false },
-      { titulo: "Nível 2", status: false },
-      { titulo: "Nível 3", status: false },
-      { titulo: "Nível 4", status: true },
+      { titulo: "Nível 1", status: true },
+      { titulo: "Nível 2", status: true },
+      { titulo: "Nível 3", status: true },
+      { titulo: "Nível 4", status: false },
     ],
   },
 ];

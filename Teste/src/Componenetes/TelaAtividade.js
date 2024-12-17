@@ -1,5 +1,5 @@
-import Atividades from "./Atividades";
 import { useState } from "react";
+import Atividades from "./Atividades";
 import { useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 import { getInfos, getAtividades, setCompletion } from "../Dados/Dados";
@@ -11,19 +11,16 @@ export default function TelaAtividade() {
   const { nomeAtividade, nivel, passo } = useParams();
   const [infos, def, texto] = getInfos(nomeAtividade, nivel, passo);
 
-  /*console.log ("Modo: " + nomeAtividade + 
-                " nivel: " + nivel + 
-                " passo: " + passo + 
-                " Infos: " + infos +
-                " Default: " + def
-            );*/
-
   const [sound, setSound] = useState(new Audio());
   const [sel, setSel] = useState(null);
-  //const myAudio = useRef();
+  const [showConfirmButton, setShowConfirmButton] = useState(false); // Show confirm button
+  const [showFeedback, setShowFeedback] = useState(false); // Show feedback
+  const [isCorrect, setIsCorrect] = useState(null); // Track whether the selected answer is correct
 
   function playAudio(elemento) {
     setSel(elemento);
+    setShowConfirmButton(true); // Show confirm button once an option is selected
+    setShowFeedback(false); // Hide feedback when a new option is selected
 
     sound.pause();
 
@@ -36,10 +33,10 @@ export default function TelaAtividade() {
   }
 
   const ativText = () => {
-    if (nomeAtividade == "qual_e_o_par") {
+    if (nomeAtividade === "qual_e_o_par") {
       return <span style={{ color: "#06995a" }}>Qual é o Par?</span>;
     }
-    if (nomeAtividade == "rapido_devagar") {
+    if (nomeAtividade === "rapido_devagar") {
       return (
         <>
           <span style={{ color: "#06995a" }}>Mais Rápido </span>
@@ -48,7 +45,7 @@ export default function TelaAtividade() {
         </>
       );
     }
-    if (nomeAtividade == "grave_agudo") {
+    if (nomeAtividade === "grave_agudo") {
       return (
         <>
           <span style={{ color: "#06995a" }}>Mais Agudo </span>
@@ -60,12 +57,7 @@ export default function TelaAtividade() {
     return <></>;
   };
 
-  //playAudio(def.arquivo);
-
-  const ativs = getAtividades();
-  //console.log(ativs);
-
-  if (infos.length == 0) {
+  if (infos.length === 0) {
     console.log("fim");
     setCompletion(nomeAtividade, nivel);
     let parte_final = null;
@@ -80,10 +72,10 @@ export default function TelaAtividade() {
             <span>SUCESSO !</span>
           </Header>
           <Navegacao>
-            <Link to={{ pathname: `/atividades` }}>
+            <Link to="/atividades">
               <button>Voltar</button>
             </Link>
-            <Link to={{ pathname: `/atividade/${nomeAtividade}` }}>
+            <Link to={`/atividade/${nomeAtividade}`}>
               <button>Avançar</button>
             </Link>
           </Navegacao>
@@ -102,10 +94,10 @@ export default function TelaAtividade() {
             <span>SUCESSO !</span>
           </Header>
           <Navegacao>
-            <Link to={{ pathname: `/atividades/` }}>
+            <Link to="/atividades/">
               <button>Voltar</button>
             </Link>
-            <Link to={{ pathname: `/atividades/` }}>
+            <Link to="/atividades/">
               <button>Parar</button>
             </Link>
           </Navegacao>
@@ -124,32 +116,39 @@ export default function TelaAtividade() {
     );
   }
 
-  function random() {
-    return Math.random() - 0.3;
-  }
-  //infos.sort(random);
-
   function press_Prox() {
     setSel(null);
+    setShowConfirmButton(false);
+    setShowFeedback(false);
+    setIsCorrect(null); // Reset correctness state
     sound.pause();
   }
 
   const proxButton = () => {
-    if (sel == null) return <></>;
-    if (sel.corr === 1)
-      return (
-        <Link
-          to={{
-            pathname: `/atividade/${nomeAtividade}/${nivel}/${
-              Number(passo) + 1
-            }`,
-          }}
-          onClick={press_Prox}
-        >
-          <button>Proximo</button>
-        </Link>
-      );
-    else return <button>Proximo</button>;
+    // Button should only appear when feedback has been shown and the answer is correct
+    if (!showFeedback || isCorrect === null || !isCorrect) return <></>; 
+    return (
+      <Link
+        to={{
+          pathname: `/atividade/${nomeAtividade}/${nivel}/${
+            Number(passo) + 1
+          }`,
+        }}
+        onClick={press_Prox}
+      >
+        <button>Próximo</button>
+      </Link>
+    );
+  };
+
+  const handleConfirm = () => {
+    if (sel && sel.corr === 1) {
+      setIsCorrect(true); // If correct, set isCorrect to true
+    } else {
+      setIsCorrect(false); // If incorrect, set isCorrect to false
+    }
+    setShowFeedback(true); // Show feedback after confirmation
+    setShowConfirmButton(false); // Hide confirm button
   };
 
   return (
@@ -159,34 +158,36 @@ export default function TelaAtividade() {
       </PaginaId>
       <Page>
         <Header>Vamos Cirandar</Header>
-        <Titulo>{ativs[nomeAtividade]}</Titulo>
+        <Titulo>{getAtividades()[nomeAtividade]}</Titulo>
         <Dado>
           <Play
             name="play-circle"
-            onClick={() => {
-              playAudio(def);
-            }}
+            onClick={() => playAudio(def)}
           ></Play>{" "}
           Ouça o início da Ciranda Cirandinha
         </Dado>
         <Pergunta>{texto}</Pergunta>
         <Alternativas>
-          {infos.map((elemento) => {
-            //console.log(elemento);
-            return (
-              <Alternativa
-                style={{ color: elemento === sel ? "red" : "green" }}
-                onClick={() => {
-                  playAudio(elemento);
-                }}
-              >
-                {elemento.opcao}
-              </Alternativa>
-            );
-          })}
+          {infos.map((elemento) => (
+            <Alternativa
+              key={elemento.opcao}
+              style={{ color: elemento === sel ? "red" : "green" }}
+              onClick={() => playAudio(elemento)}
+            >
+              {elemento.opcao}
+            </Alternativa>
+          ))}
         </Alternativas>
+        {showConfirmButton && (
+          <ConfirmButton onClick={handleConfirm}>Confirmar</ConfirmButton>
+        )}
+        {showFeedback && (
+          <Feedback isCorrect={isCorrect}>
+            {isCorrect ? "✅ Resposta correta!" : "❌ Resposta incorreta!"}
+          </Feedback>
+        )}
         <Navegacao>
-          <Link to={{ pathname: `/atividades` }}>
+          <Link to="/atividades">
             <button>Voltar</button>
           </Link>
           {proxButton()}
@@ -198,14 +199,10 @@ export default function TelaAtividade() {
 
 const Navegacao = styled.ul`
   width: 100%;
-
   box-sizing: border-box;
-
   padding: 20px;
-
   position: absolute;
   bottom: 25px;
-
   display: flex;
   justify-content: space-between;
 `;
@@ -213,9 +210,7 @@ const Navegacao = styled.ul`
 const Page = styled.main`
   width: 100%;
   height: 100%;
-
   box-sizing: border-box;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -224,7 +219,6 @@ const Page = styled.main`
 
 const Header = styled.h1`
   width: 100%;
-  height: auto;
   margin: 20px 0;
   text-align: center;
   color: #0070c0;
@@ -233,7 +227,6 @@ const Header = styled.h1`
 
 const Titulo = styled.h2`
   width: 100%;
-  height: auto;
   margin: 15px 0;
   text-align: center;
   color: green;
@@ -241,29 +234,19 @@ const Titulo = styled.h2`
 `;
 
 const Dado = styled.p`
-  width: auto;
-  height: 50px;
-
   color: rgb(7, 166, 219);
   font-size: 30px;
-
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 const Pergunta = styled.p`
-  width: auto;
-  height: 50px;
-
-  color: rgb(7, 166, 219);
   font-size: 30px;
-
+  color: green;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  color: green;
 `;
 
 const Play = styled("ion-icon")`
@@ -274,9 +257,6 @@ const Play = styled("ion-icon")`
 `;
 
 const Alternativas = styled.ul`
-  width: 100%;
-  height: auto;
-
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -284,6 +264,26 @@ const Alternativas = styled.ul`
 
 const Alternativa = styled.p`
   font-size: 50px;
-
   margin: 50px;
+  cursor: pointer;
+`;
+
+const ConfirmButton = styled.button`
+  font-size: 24px;
+  background-color: #0070c0;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: #005b8c;
+  }
+`;
+
+const Feedback = styled.div`
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: ${(props) => (props.isCorrect ? "green" : "red")};
 `;

@@ -41,227 +41,47 @@ export const nivel_ativ = [
   { modo: "qual_e_o_par", nivel: 3, ativ: 2, texto: "Onde está o início?" },
   { modo: "qual_e_o_par", nivel: 3, ativ: 3, texto: "Onde está o início?" },
 
-  {
-    modo: "rapido_devagar",
-    nivel: 1,
-    ativ: 1,
-    texto: "Onde ela está mais rápida?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 1,
-    ativ: 2,
-    texto: "Onde ela está mais devagar?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 1,
-    ativ: 3,
-    texto: "Onde ela está mais rápida?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 1,
-    ativ: 4,
-    texto: "Onde ela está mais devagar?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 1,
-    ativ: 5,
-    texto: "Onde ela está mais rápida?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 1,
-    ativ: 6,
-    texto: "Onde ela está mais devagar?",
-  },
+  {modo: "rapido_devagar",nivel: 1, ativ: 1, texto: "Onde ela está mais rápida?",},
+  {modo: "rapido_devagar",nivel: 1,ativ: 2,texto: "Onde ela está mais devagar?",},
+  {modo: "rapido_devagar",nivel: 1,ativ: 3,texto: "Onde ela está mais rápida?",},
+  {modo: "rapido_devagar",nivel: 1,ativ: 4,texto: "Onde ela está mais devagar?",},
+  {modo: "rapido_devagar",nivel: 1,ativ: 5,texto: "Onde ela está mais rápida?",},
+  {modo: "rapido_devagar",nivel: 1,ativ: 6,texto: "Onde ela está mais devagar?",},
 
-  {
-    modo: "rapido_devagar",
-    nivel: 2,
-    ativ: 1,
-    texto: "Onde ela está mais rápida?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 2,
-    ativ: 2,
-    texto: "Onde ela está mais devagar?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 2,
-    ativ: 3,
-    texto: "Onde ela está mais rápida?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 2,
-    ativ: 4,
-    texto: "Onde ela está mais devagar?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 2,
-    ativ: 5,
-    texto: "Onde ela está mais rápida?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 2,
-    ativ: 6,
-    texto: "Onde ela está mais devagar?",
-  },
+  {modo: "rapido_devagar",nivel: 2,ativ: 1,texto: "Onde ela está mais rápida?",},
+  {modo: "rapido_devagar",nivel: 2,ativ: 2,texto: "Onde ela está mais devagar?",},
+  {modo: "rapido_devagar",nivel: 2,ativ: 3,texto: "Onde ela está mais rápida?",},
+  {modo: "rapido_devagar",nivel: 2,ativ: 4,texto: "Onde ela está mais devagar?",},
+  {modo: "rapido_devagar",nivel: 2,ativ: 5,texto: "Onde ela está mais rápida?",},
+  {modo: "rapido_devagar",nivel: 2,ativ: 6,texto: "Onde ela está mais devagar?",},
 
-  {
-    modo: "rapido_devagar",
-    nivel: 3,
-    ativ: 1,
-    texto: "Onde ela está mais rápida?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 3,
-    ativ: 2,
-    texto: "Onde ela está mais devagar?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 3,
-    ativ: 3,
-    texto: "Onde ela está mais rápida?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 3,
-    ativ: 4,
-    texto: "Onde ela está mais devagar?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 3,
-    ativ: 5,
-    texto: "Onde ela está mais rápida?",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 3,
-    ativ: 6,
-    texto: "Onde ela está mais devagar?",
-  },
+  {modo: "rapido_devagar",nivel: 3,ativ: 1,texto: "Onde ela está mais rápida?",},
+  {modo: "rapido_devagar",nivel: 3,ativ: 2,texto: "Onde ela está mais devagar?",},
+  {modo: "rapido_devagar",nivel: 3,ativ: 3,texto: "Onde ela está mais rápida?",},
+  {modo: "rapido_devagar",nivel: 3,ativ: 4,texto: "Onde ela está mais devagar?",},
+  {modo: "rapido_devagar",nivel: 3,ativ: 5,texto: "Onde ela está mais rápida?",},
+  {modo: "rapido_devagar",nivel: 3,ativ: 6,texto: "Onde ela está mais devagar?",},
 
-  {
-    modo: "grave_agudo",
-    nivel: 1,
-    ativ: 1,
-    texto: "Onde ela está mais aguda?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 1,
-    ativ: 2,
-    texto: "Onde ela está mais grave?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 1,
-    ativ: 3,
-    texto: "Onde ela está mais aguda?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 1,
-    ativ: 4,
-    texto: "Onde ela está mais grave?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 1,
-    ativ: 5,
-    texto: "Onde ela está mais aguda?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 1,
-    ativ: 6,
-    texto: "Onde ela está mais grave?",
-  },
+  {modo: "grave_agudo",nivel: 1,ativ: 1,texto: "Onde ela está mais aguda?",},
+  {modo: "grave_agudo",nivel: 1,ativ: 2,texto: "Onde ela está mais grave?",},
+  {modo: "grave_agudo",nivel: 1,ativ: 3,texto: "Onde ela está mais aguda?",},
+  {modo: "grave_agudo",nivel: 1,ativ: 4,texto: "Onde ela está mais grave?",},
+  {modo: "grave_agudo",nivel: 1,ativ: 5,texto: "Onde ela está mais aguda?",},
+  {modo: "grave_agudo",nivel: 1,ativ: 6,texto: "Onde ela está mais grave?",},
 
-  {
-    modo: "grave_agudo",
-    nivel: 2,
-    ativ: 1,
-    texto: "Onde ela está mais aguda?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 2,
-    ativ: 2,
-    texto: "Onde ela está mais grave?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 2,
-    ativ: 3,
-    texto: "Onde ela está mais aguda?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 2,
-    ativ: 4,
-    texto: "Onde ela está mais grave?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 2,
-    ativ: 5,
-    texto: "Onde ela está mais aguda?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 2,
-    ativ: 6,
-    texto: "Onde ela está mais grave?",
-  },
+  {modo: "grave_agudo",nivel: 2,ativ: 1,texto: "Onde ela está mais aguda?",},
+  {modo: "grave_agudo",nivel: 2,ativ: 2,texto: "Onde ela está mais grave?",},
+  {modo: "grave_agudo",nivel: 2,ativ: 3,texto: "Onde ela está mais aguda?",},
+  {modo: "grave_agudo",nivel: 2,ativ: 4,texto: "Onde ela está mais grave?",},
+  {modo: "grave_agudo",nivel: 2,ativ: 5,texto: "Onde ela está mais aguda?",},
+  {modo: "grave_agudo",nivel: 2,ativ: 6,texto: "Onde ela está mais grave?",},
 
-  {
-    modo: "grave_agudo",
-    nivel: 3,
-    ativ: 1,
-    texto: "Onde ela está mais aguda?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 3,
-    ativ: 2,
-    texto: "Onde ela está mais grave?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 3,
-    ativ: 3,
-    texto: "Onde ela está mais aguda?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 3,
-    ativ: 4,
-    texto: "Onde ela está mais grave?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 3,
-    ativ: 5,
-    texto: "Onde ela está mais aguda?",
-  },
-  {
-    modo: "grave_agudo",
-    nivel: 3,
-    ativ: 6,
-    texto: "Onde ela está mais grave?",
-  },
+  {modo: "grave_agudo",nivel: 3,ativ: 1,texto: "Onde ela está mais aguda?",},
+  {modo: "grave_agudo",nivel: 3,ativ: 2,texto: "Onde ela está mais grave?",},
+  {modo: "grave_agudo",nivel: 3,ativ: 3,texto: "Onde ela está mais aguda?",},
+  {modo: "grave_agudo",nivel: 3,ativ: 4,texto: "Onde ela está mais grave?",},
+  {modo: "grave_agudo",nivel: 3,ativ: 5,texto: "Onde ela está mais aguda?",},
+  {modo: "grave_agudo",nivel: 3,ativ: 6,texto: "Onde ela está mais grave?",},
 ];
 
 export const musicas_opcoes = [
@@ -325,7 +145,7 @@ export const musicas_opcoes = [
     arquivo: "CaiCaiBalao_Parte2_FaM_AndBase.wav",
   },
 
-  // Encontre o Par NÍVEL II Atividade 3
+  // Encontre o Par NÍVEL I Atividade 3
   {
     modo: "qual_e_o_par",
     nivel: 1,
@@ -1182,8 +1002,8 @@ export const musicas_opcoes = [
     opcao: "D",
     arquivo: "Ciranda_Comp_FaM_AndDev.wav",
   },
-
-  // Rápido ou Devagar NÍVEL IIII Atividade 1
+/*
+  // Rápido ou Devagar NÍVEL IV Atividade 1
   {
     modo: "rapido_devagar",
     nivel: 4,
@@ -1209,7 +1029,7 @@ export const musicas_opcoes = [
     arquivo: "Ciranda_Comp_FaM_AndRap.wav",
   },
 
-  // Rápido ou Devagar NÍVEL IIII Atividade 2
+  // Rápido ou Devagar NÍVEL IV Atividade 2
   {
     modo: "rapido_devagar",
     nivel: 4,
@@ -1235,7 +1055,7 @@ export const musicas_opcoes = [
     arquivo: "Ciranda_Comp_FaM_AndRap.wav",
   },
 
-  // Rápido ou Devagar NÍVEL IIII Atividade 3
+  // Rápido ou Devagar NÍVEL IV Atividade 3
   {
     modo: "rapido_devagar",
     nivel: 4,
@@ -1269,7 +1089,7 @@ export const musicas_opcoes = [
     arquivo: "Ciranda_Comp_FaM_AndDev.wav",
   },
 
-  // Rápido ou Devagar NÍVEL IIII Atividade 4
+  // Rápido ou Devagar NÍVEL IV Atividade 4
   {
     modo: "rapido_devagar",
     nivel: 4,
@@ -1303,7 +1123,7 @@ export const musicas_opcoes = [
     arquivo: "Ciranda_Comp_FaM_AndDev.wav",
   },
 
-  // Rápido ou Devagar NÍVEL IIII Atividade 5
+  // Rápido ou Devagar NÍVEL IV Atividade 5
   {
     modo: "rapido_devagar",
     nivel: 4,
@@ -1326,7 +1146,7 @@ export const musicas_opcoes = [
     ativ: 5,
     corr: 0,
     opcao: "B",
-    arquivo: "ParabensVoce_Parte2_FaM_AndBase.wav",
+    arquivo: "ParabensVoce_Parte1_FaM_AndBase.wav",
   },
   {
     modo: "rapido_devagar",
@@ -1345,7 +1165,7 @@ export const musicas_opcoes = [
     arquivo: "Ciranda_Comp_FaM_AndDev.wav",
   },
 
-  // Rápido ou Devagar NÍVEL IIII Atividade 6
+  // Rápido ou Devagar NÍVEL IV Atividade 6
   {
     modo: "rapido_devagar",
     nivel: 4,
@@ -1385,7 +1205,7 @@ export const musicas_opcoes = [
     corr: 1,
     opcao: "D",
     arquivo: "Ciranda_Comp_FaM_AndDev.wav",
-  },
+  }, */
   // Agudo ou Grave NÍVEL I Atividade 1
   {
     modo: "grave_agudo",
@@ -1527,7 +1347,7 @@ export const musicas_opcoes = [
     modo: "grave_agudo",
     nivel: 1,
     ativ: 5,
-    corr: 0,
+    corr: 1,
     opcao: "B",
     arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
   },
@@ -1543,7 +1363,7 @@ export const musicas_opcoes = [
     modo: "grave_agudo",
     nivel: 1,
     ativ: 5,
-    corr: 1,
+    corr: 0,
     opcao: "D",
     arquivo: "Ciranda_Comp_DoM_AndRap.wav",
   },
@@ -1593,6 +1413,209 @@ export const musicas_opcoes = [
   // Agudo ou Grave NÍVEL II Atividade 1
   {
     modo: "grave_agudo",
+    nivel: 2,
+    ativ: 1,
+    corr: 0,
+    opcao: "P",
+    arquivo: "Ciranda_Comp_DoM_AndBaseGrav.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 1,
+    corr: 0,
+    opcao: "A",
+    arquivo: "CaiCai_Comp_DoM_AndRap.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 1,
+    corr: 1,
+    opcao: "B",
+    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
+  },
+
+  // Agudo ou Grave NÍVEL II Atividade 2
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 2,
+    corr: 0,
+    opcao: "P",
+    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 2,
+    corr: 0,
+    opcao: "A",
+    arquivo: "CaiCai_Comp_SibM_AndDev.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 2,
+    corr: 1,
+    opcao: "B",
+    arquivo: "Ciranda_Comp_DoM_AndBaseGrav.wav",
+  },
+
+  // Agudo ou Grave NÍVEL II Atividade 3
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 3,
+    corr: 0,
+    opcao: "P",
+    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 3,
+    corr: 0,
+    opcao: "A",
+    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 3,
+    corr: 1,
+    opcao: "B",
+    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 3,
+    corr: 0,
+    opcao: "C",
+    arquivo: "Parabens_Comp_DoM_AndBase.wav",
+  },
+
+  // Agudo ou Grave NÍVEL II Atividade 4
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 4,
+    corr: 0,
+    opcao: "P",
+    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 4,
+    corr: 0,
+    opcao: "A",
+    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 4,
+    corr: 0,
+    opcao: "B",
+    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 4,
+    corr: 1,
+    opcao: "C",
+    arquivo: "Ciranda_Comp_DoM_AndBase_Grav.wav",
+  },
+
+  // Agudo ou Grave NÍVEL II Atividade 5
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 5,
+    corr: 0,
+    opcao: "P",
+    arquivo: "Ciranda_Comp_DoM_AndBaseGrav.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 5,
+    corr: 0,
+    opcao: "A",
+    arquivo: "Parabens_Comp_DoM_AndBase.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 5,
+    corr: 0,
+    opcao: "B",
+    arquivo: "Parabens_Comp_FaM_AndBase.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 5,
+    corr: 1,
+    opcao: "C",
+    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 5,
+    corr: 0,
+    opcao: "D",
+    arquivo: "Ciranda_Comp_DoM_AndRap.wav",
+  },
+
+  // Agudo ou Grave NÍVEL II Atividade 6
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 6,
+    corr: 0,
+    opcao: "P",
+    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 6,
+    corr: 0,
+    opcao: "A",
+    arquivo: "Ciranda_Comp_SibM_AndDev.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 6,
+    corr: 0,
+    opcao: "B",
+    arquivo: "CaiCai_Comp_FaM_AndBase.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 6,
+    corr: 0,
+    opcao: "C",
+    arquivo: "Ciranda_Comp_SibM_AndRap.wav",
+  },
+  {
+    modo: "grave_agudo",
+    nivel: 2,
+    ativ: 6,
+    corr: 1,
+    opcao: "D",
+    arquivo: "Ciranda_Comp_DoM_AndBase.wav",
+  },
+  // Agudo ou Grave NÍVEL III Atividade 1
+  {
+    modo: "grave_agudo",
     nivel: 3,
     ativ: 1,
     corr: 0,
@@ -1615,15 +1638,14 @@ export const musicas_opcoes = [
     opcao: "B",
     arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
   },
-
-  // Agudo ou Grave NÍVEL II Atividade 2
+  // Agudo ou Grave NIVEL III Atividade 2
   {
     modo: "grave_agudo",
     nivel: 3,
     ativ: 2,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_SibM_AndBaseAgu.wav",
+    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
   },
   {
     modo: "grave_agudo",
@@ -1641,8 +1663,7 @@ export const musicas_opcoes = [
     opcao: "B",
     arquivo: "Ciranda_Comp_DoM_AndBase.wav",
   },
-
-  // Agudo ou Grave NÍVEL II Atividade 3
+  //Agudo ou Grave NIVEL III Atividade 3
   {
     modo: "grave_agudo",
     nivel: 3,
@@ -1675,8 +1696,7 @@ export const musicas_opcoes = [
     opcao: "C",
     arquivo: "Parabens_Comp_DoM_AndBase.wav",
   },
-
-  // Agudo ou Grave NÍVEL II Atividade 4
+  //Agudo ou Grave NIVEL III Atividade 4
   {
     modo: "grave_agudo",
     nivel: 3,
@@ -1709,8 +1729,7 @@ export const musicas_opcoes = [
     opcao: "C",
     arquivo: "SitioVelhoMario_Comp_DoM_AndBase.wav",
   },
-
-  // Agudo ou Grave NÍVEL II Atividade 5
+  //Agudo ou Grave NIVEL III Atividade 5
   {
     modo: "grave_agudo",
     nivel: 3,
@@ -1751,15 +1770,14 @@ export const musicas_opcoes = [
     opcao: "D",
     arquivo: "Ciranda_Comp_DoM_AndRap.wav",
   },
-
-  // Agudo ou Grave NÍVEL II Atividade 6
+  // Agudo ou Grave NIVEL III Atividade 6
   {
     modo: "grave_agudo",
     nivel: 3,
     ativ: 6,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_SibM_AndBaseAgu.wav",
+    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
   },
   {
     modo: "grave_agudo",
