@@ -1,0 +1,49 @@
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(7, 166, 219);
+    color: white;
+}
+
+.root{
+    background-color: rgb(255, 255, 255);
+
+    max-width: 80vw;
+    max-height: 100vh;
+    width: 80vw;
+    height: 100vh;
+
+    border: 5px solid white;
+    border-radius: 5%;
+
+    position: relative;
+    box-sizing: initial;
+}
+
+button {
+    width: 200px;
+    height: 90px;
+
+    border: 5px solid rgb(7, 166, 219);
+    border-radius: 25%;
+
+    background-color: white;
+    color: rgb(7, 166, 219);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 30px;
+
+}
+
+button:hover{
+    background-color: rgb(73, 212, 250);
+    color: white;
+    border: 5px double  rgb(7, 166, 219);
+    cursor: pointer;
+}
