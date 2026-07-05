@@ -1213,7 +1213,7 @@ export const musicas_opcoes = [
     ativ: 1,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_DoM_AndRap.wav",
+    arquivo: "TrechoDado_Ciranda_Comp_DoM_AndBaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1221,7 +1221,7 @@ export const musicas_opcoes = [
     ativ: 1,
     corr: 1,
     opcao: "A",
-    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
+    arquivo: "OpcaoA_Ciranda_Comp_SibM_AndBaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1229,7 +1229,7 @@ export const musicas_opcoes = [
     ativ: 1,
     corr: 0,
     opcao: "B",
-    arquivo: "Ciranda_Comp_DoM_AndBaseGrav.wav",
+    arquivo: "OpcaoB_Ciranda_Comp_DoM_AndRapFL118.wav",
   },
 
   // Agudo ou Grave NÍVEL I Atividade 2
@@ -1239,7 +1239,7 @@ export const musicas_opcoes = [
     ativ: 2,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_DoM_AndRap.wav",
+    arquivo: "TrechoDado_Ciranda_Comp_SibM_AndBaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1247,7 +1247,7 @@ export const musicas_opcoes = [
     ativ: 2,
     corr: 0,
     opcao: "A",
-    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
+    arquivo: "OpcaoA_Ciranda_Comp_SibM_AndDevFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1255,7 +1255,7 @@ export const musicas_opcoes = [
     ativ: 2,
     corr: 1,
     opcao: "B",
-    arquivo: "Ciranda_Comp_DoM_AndBaseGrav.wav",
+    arquivo: "OpcaoB_Ciranda_Comp_DoM_AndBaseFL118.wav",
   },
 
   // Agudo ou Grave NÍVEL I Atividade 3
@@ -1265,7 +1265,7 @@ export const musicas_opcoes = [
     ativ: 3,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "TrechoDado_Ciranda_Comp_FaM_andbaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1273,7 +1273,7 @@ export const musicas_opcoes = [
     ativ: 3,
     corr: 0,
     opcao: "A",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "OpcaoA_Ciranda_Comp_FaM_AndBaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1281,7 +1281,7 @@ export const musicas_opcoes = [
     ativ: 3,
     corr: 1,
     opcao: "B",
-    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
+    arquivo: "OpcaoB_Ciranda_Comp_SibM_AndBaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1289,7 +1289,7 @@ export const musicas_opcoes = [
     ativ: 3,
     corr: 0,
     opcao: "C",
-    arquivo: "Ciranda_Comp_DoM_AndBaseGrav.wav",
+    arquivo: "OpcaoC_Ciranda_Comp_DoM_AndBaseFL118.wav",
   },
 
   // Agudo ou Grave NÍVEL I Atividade 4
@@ -1299,7 +1299,7 @@ export const musicas_opcoes = [
     ativ: 4,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "TrechoDado_Ciranda_Comp_FaM_andbaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1307,7 +1307,7 @@ export const musicas_opcoes = [
     ativ: 4,
     corr: 0,
     opcao: "A",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "OpcaoA_Ciranda_Comp_FaM_AndBaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1315,7 +1315,7 @@ export const musicas_opcoes = [
     ativ: 4,
     corr: 0,
     opcao: "B",
-    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
+    arquivo: "OpcaoB_Ciranda_Comp_SibM_AndBaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1323,7 +1323,7 @@ export const musicas_opcoes = [
     ativ: 4,
     corr: 1,
     opcao: "C",
-    arquivo: "Ciranda_Comp_DoM_AndBaseGrav.wav",
+    arquivo: "OpcaoC_Ciranda_Comp_DoM_AndBaseFL118.wav ",
   },
 
   // Agudo ou Grave NÍVEL I Atividade 5
@@ -1333,7 +1333,7 @@ export const musicas_opcoes = [
     ativ: 5,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "TrechoDado_Ciranda_Comp_FaM_andbaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1341,7 +1341,7 @@ export const musicas_opcoes = [
     ativ: 5,
     corr: 0,
     opcao: "A",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "OpcaoA_Ciranda_Comp_FaM_AndBaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1349,7 +1349,7 @@ export const musicas_opcoes = [
     ativ: 5,
     corr: 1,
     opcao: "B",
-    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
+    arquivo: "OpcaoB_Ciranda_Comp_SibM_AndBaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1357,7 +1357,7 @@ export const musicas_opcoes = [
     ativ: 5,
     corr: 0,
     opcao: "C",
-    arquivo: "Ciranda_Comp_DoM_AndBaseGrav.wav",
+    arquivo: "OpcaoC_Ciranda_Comp_DoM_AndBaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1365,7 +1365,7 @@ export const musicas_opcoes = [
     ativ: 5,
     corr: 0,
     opcao: "D",
-    arquivo: "Ciranda_Comp_DoM_AndRap.wav",
+    arquivo: "OpcaoD_Ciranda_Comp_DoM_AndRapFL118.wav",
   },
 
   // Agudo ou Grave NÍVEL I Atividade 6
@@ -1375,7 +1375,7 @@ export const musicas_opcoes = [
     ativ: 6,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "TrechoDado_Ciranda_Comp_FaM_andbaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1383,7 +1383,7 @@ export const musicas_opcoes = [
     ativ: 6,
     corr: 0,
     opcao: "A",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "OpcaoA_Ciranda_Comp_FaM_AndBaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1391,7 +1391,7 @@ export const musicas_opcoes = [
     ativ: 6,
     corr: 0,
     opcao: "B",
-    arquivo: "Ciranda_Comp_SibM_AndBase_Agu.wav",
+    arquivo: "OpcaoB_Ciranda_Comp_SibM_AndBaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1399,7 +1399,7 @@ export const musicas_opcoes = [
     ativ: 6,
     corr: 1,
     opcao: "C",
-    arquivo: "Ciranda_Comp_DoM_AndBaseGrav.wav",
+    arquivo: "OpcaoC_Ciranda_Comp_DoM_AndBaseFL118.wav",
   },
   {
     modo: "grave_agudo",
@@ -1407,7 +1407,7 @@ export const musicas_opcoes = [
     ativ: 6,
     corr: 0,
     opcao: "D",
-    arquivo: "Ciranda_Comp_SibM_AndDev.wav",
+    arquivo: "OpcaoD_Ciranda_Comp_SibM_AndDevFL118.wav",
   },
 
   // Agudo ou Grave NÍVEL II Atividade 1
