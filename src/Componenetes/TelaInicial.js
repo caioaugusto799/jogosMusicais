@@ -37,12 +37,17 @@ const Header = styled.h1`
 `;
 
 const VamosJogar = styled.button`
+  width: auto;
+  height: auto;
+  min-width: 560px;
+  white-space: nowrap;
+
   /* AUMENTO DE TAMANHO: Font e Padding significativamente maiores */
-  font-size: 45px; 
-  padding: 50px 120px; 
+  font-size: 52px; 
+  padding: 55px 130px; 
   
   /* Ajuste do arredondamento para o novo tamanho */
-  border-radius: 110px; 
+  border-radius: 100px; 
   
   font-family: 'Comic Sans MS', 'Cursive', sans-serif;
   font-weight: bold;
