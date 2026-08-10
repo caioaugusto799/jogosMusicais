@@ -9,12 +9,20 @@ export default function TelaNiveis() {
     
     return (
         <Container>
-            <Header>Vamos Cirandar!</Header>
+            <CaixaTitulo>
+                <Header>Vamos Cirandar!</Header>
+            </CaixaTitulo>
 
             <AreaConteudo>
-                <SubTitulo>{ativs.get(nomeAtividade)}</SubTitulo>
-                
-                <ListaNiveis>
+                <CaixaOpcoes>
+                    <SubTitulo>{ativs.get(nomeAtividade)}</SubTitulo>
+
+                    <RotuloOpcoes>
+                        <ion-icon name="list-outline"></ion-icon>
+                        Escolha um nível
+                    </RotuloOpcoes>
+
+                    <ListaNiveis>
                     {/* Nível 1 - (Sempre Aberto) */}
                     <Link to={`/atividade/${nomeAtividade}/1/1`} style={{ textDecoration: 'none' }}>
                         <BotaoNivel Aberto={true}>
@@ -45,7 +53,8 @@ export default function TelaNiveis() {
                             );
                         }
                     })}
-                </ListaNiveis>
+                    </ListaNiveis>
+                </CaixaOpcoes>
             </AreaConteudo>
 
             <NavegacaoRodape>
@@ -68,15 +77,29 @@ const Container = styled.div`
   font-family: 'Comic Sans MS', sans-serif;
 `;
 
-const Header = styled.h1`
+const CaixaTitulo = styled.div`
   position: absolute;
   top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: #ffffff;
+  border: 4px solid #0070c0;
+  border-radius: 30px;
+  padding: 15px 50px;
+`;
+
+const Header = styled.h1`
   width: 100%;
   text-align: center;
-  font-size: 70px;
+  font-size: 58px;
   color: #0070c0;
   text-transform: uppercase;
   font-weight: bold;
+  letter-spacing: 3px;
+
+  padding-bottom: 12px;
+  border-bottom: 5px solid #00b0f0;
 `;
 
 const AreaConteudo = styled.main`
@@ -84,28 +107,62 @@ const AreaConteudo = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 160px;
+  padding-top: 200px;
+`;
+
+const CaixaOpcoes = styled.div`
+  background-color: #ffffff;
+  border: 4px solid #00b050;
+  border-radius: 30px;
+  padding: 55px 90px;
+  min-width: 700px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const SubTitulo = styled.h2`
-  font-size: 40px;
-  color: #00b050;
+  font-size: 36px;
+  color: #0070c0;
   font-weight: bold;
-  margin-bottom: 40px;
+  margin-bottom: 15px;
   text-transform: uppercase;
+  text-align: center;
+`;
+
+const RotuloOpcoes = styled.p`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  background-color: #00b050;
+  border-radius: 50px;
+  padding: 10px 22px;
+  margin-bottom: 30px;
+
+  ion-icon {
+    font-size: 22px;
+  }
 `;
 
 const ListaNiveis = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 45px;
 `;
 
 const BotaoNivel = styled.button`
-  width: 450px;
-  font-size: 30px;
-  padding: 20px;
-  border-radius: 50px;
+  width: 850px;
+  font-size: 40px;
+  padding: 45px;
+  border-radius: 60px;
   font-family: 'Comic Sans MS', sans-serif;
   font-weight: bold;
   color: white;

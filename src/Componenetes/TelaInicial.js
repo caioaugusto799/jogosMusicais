@@ -42,7 +42,7 @@ const VamosJogar = styled.button`
   padding: 50px 120px; 
   
   /* Ajuste do arredondamento para o novo tamanho */
-  border-radius: 100px; 
+  border-radius: 110px; 
   
   font-family: 'Comic Sans MS', 'Cursive', sans-serif;
   font-weight: bold;

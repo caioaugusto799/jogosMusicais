@@ -11,23 +11,39 @@ export default function TelaAtividades() {
 
   return (
     <Container>
-      {/* Título fixo no topo */}
-      <Header>Vamos Cirandar!</Header>
+      <CaixaTitulo>
+        <Header>Vamos Cirandar!</Header>
+      </CaixaTitulo>
 
       <AreaConteudo>
-        <ListaJogos>
-          <Link to="/atividade/qual_e_o_par" style={{ textDecoration: 'none' }}>
-            <BotaoJogo>Qual é o par?</BotaoJogo>
-          </Link>
-          
-          <Link to="/atividade/rapido_devagar" style={{ textDecoration: 'none' }}>
-            <BotaoJogo>Mais Rápido ou Mais Devagar</BotaoJogo>
-          </Link>
+        <CaixaOpcoes>
+          <RotuloOpcoes>
+            <ion-icon name="list-outline"></ion-icon>
+            Escolha uma atividade
+          </RotuloOpcoes>
+          <ListaJogos>
+            <Link to="/atividade/qual_e_o_par" style={{ textDecoration: 'none' }}>
+              <BotaoJogo>
+                <ion-icon name="extension-puzzle-outline"></ion-icon>
+                <span>Qual é o par?</span>
+              </BotaoJogo>
+            </Link>
 
-          <Link to="/atividade/grave_agudo" style={{ textDecoration: 'none' }}>
-            <BotaoJogo>Mais Agudo ou Mais Grave</BotaoJogo>
-          </Link>
-        </ListaJogos>
+            <Link to="/atividade/rapido_devagar" style={{ textDecoration: 'none' }}>
+              <BotaoJogo>
+                <ion-icon name="speedometer-outline"></ion-icon>
+                <span>Mais Rápido ou Mais Devagar</span>
+              </BotaoJogo>
+            </Link>
+
+            <Link to="/atividade/grave_agudo" style={{ textDecoration: 'none' }}>
+              <BotaoJogo>
+                <ion-icon name="swap-vertical-outline"></ion-icon>
+                <span>Mais Agudo ou Mais Grave</span>
+              </BotaoJogo>
+            </Link>
+          </ListaJogos>
+        </CaixaOpcoes>
       </AreaConteudo>
 
       <NavegacaoRodape>
@@ -35,7 +51,7 @@ export default function TelaAtividades() {
           <BotaoAcao>Voltar</BotaoAcao>
         </Link>
         
-        <BotaoAcao onClick={handleExit}>Parar</BotaoAcao>
+        <BotaoAcao onClick={handleExit}>Sair</BotaoAcao>
       </NavegacaoRodape>
     </Container>
   );
@@ -52,18 +68,31 @@ const Container = styled.div`
 `;
 
 
-const Header = styled.h1`
+const CaixaTitulo = styled.div`
   position: absolute;
-  top: 40px; /* Distância do topo */
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: #ffffff;
+  border: 4px solid #0070c0;
+  border-radius: 30px;
+  padding: 15px 50px;
+`;
+
+const Header = styled.h1`
   width: 100%;
   text-align: center;
-  
-  font-size: 75px;
+
+  font-size: 58px;
   color: #0070c0;
   font-family: 'Comic Sans MS', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+
+  padding-bottom: 12px;
+  border-bottom: 5px solid #00b0f0;
 `;
 
 const AreaConteudo = styled.div`
@@ -72,13 +101,47 @@ const AreaConteudo = styled.div`
   flex-direction: column;
   justify-content: flex-start; /* Alinha o conteúdo começando pelo topo */
   align-items: center;
-  padding-top: 180px; /* Dá espaço para o Header não cobrir os botões */
+  padding-top: 200px; /* Dá espaço para o Header não cobrir os botões */
+`;
+
+const CaixaOpcoes = styled.div`
+  background-color: #ffffff;
+  border: 4px solid #00b050;
+  border-radius: 30px;
+  padding: 55px 90px;
+  min-width: 700px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const RotuloOpcoes = styled.p`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  background-color: #00b050;
+  border-radius: 50px;
+  padding: 10px 22px;
+  margin-bottom: 30px;
+
+  ion-icon {
+    font-size: 22px;
+  }
 `;
 
 const ListaJogos = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 25px; /* Mantém o mesmo espaçamento entre os botões */
+  gap: 45px;
 `;
 
 const NavegacaoRodape = styled.div`
@@ -93,9 +156,11 @@ const NavegacaoRodape = styled.div`
 `;
 
 const BotaoJogo = styled.button`
-  width: 600px;
-  font-size: 35px;
-  padding: 25px;
+  width: 650px;
+  height: auto;
+  min-height: 105px;
+  font-size: 34px;
+  padding: 22px 35px;
   border-radius: 60px;
   font-family: 'Comic Sans MS', sans-serif;
   font-weight: bold;
@@ -107,6 +172,23 @@ const BotaoJogo = styled.button`
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   transition: all 0.3s ease-out;
+
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  align-items: center;
+
+  ion-icon {
+    font-size: 42px;
+    justify-self: center;
+  }
+
+  span {
+    justify-self: center;
+    text-align: center;
+    line-height: 1.2;
+    min-width: 0;
+    width: 100%;
+  }
 
   &:hover {
     transform: translateY(-8px) scale(1.02);
