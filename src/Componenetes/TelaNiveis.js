@@ -6,9 +6,11 @@ export default function TelaNiveis() {
     const { nomeAtividade } = useParams();
     const ativs = getAtividades();
     const niveis = getNiveis(nomeAtividade);
-    
+
     return (
         <Container>
+            <FundoParque src="/Audios/Video/parque_loop_nuvens.gif" alt="" />
+
             <CaixaTitulo>
                 <Header>Vamos Cirandar!</Header>
             </CaixaTitulo>
@@ -26,7 +28,7 @@ export default function TelaNiveis() {
                     {/* Nível 1 - (Sempre Aberto) */}
                     <Link to={`/atividade/${nomeAtividade}/1/1`} style={{ textDecoration: 'none' }}>
                         <BotaoNivel Aberto={true}>
-                            Nível 1 
+                            Nível 1
                             <ion-icon name="lock-open-outline"></ion-icon>
                         </BotaoNivel>
                     </Link>
@@ -34,12 +36,12 @@ export default function TelaNiveis() {
                     {/* Mapeamento filtrado: ignoramos o 1 porque já está acima */}
                     {niveis.filter(n => n > 1).map(nivel => {
                         const estaConcluidoAnterior = getCompletion(nomeAtividade, nivel - 1);
-                        
+
                         if (estaConcluidoAnterior) {
                             return (
                                 <Link key={nivel} to={`/atividade/${nomeAtividade}/${nivel}/1`} style={{ textDecoration: 'none' }}>
                                     <BotaoNivel Aberto={true}>
-                                        Nível {nivel} 
+                                        Nível {nivel}
                                         <ion-icon name="lock-open-outline"></ion-icon>
                                     </BotaoNivel>
                                 </Link>
@@ -47,7 +49,7 @@ export default function TelaNiveis() {
                         } else {
                             return (
                                 <BotaoNivel key={nivel} Aberto={false}>
-                                    Nível {nivel} 
+                                    Nível {nivel}
                                     <ion-icon name="lock-closed-outline"></ion-icon>
                                 </BotaoNivel>
                             );
@@ -74,7 +76,19 @@ const Container = styled.div`
   background-color: #f0f8ff;
   position: relative;
   overflow: hidden;
-  font-family: 'Comic Sans MS', sans-serif;
+  font-family: 'Nunito', 'Comic Sans MS', sans-serif;
+`;
+
+/* Mesmo GIF de fundo usado nas outras telas. z-index precisa ser 0 (não -1):
+   com -1 a imagem escapa pra trás do background-color do Container e fica
+   invisível. */
+const FundoParque = styled.img`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 `;
 
 const CaixaTitulo = styled.div`
@@ -82,6 +96,7 @@ const CaixaTitulo = styled.div`
   top: 40px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 1;
 
   background-color: #ffffff;
   border: 4px solid #0070c0;
@@ -92,22 +107,27 @@ const CaixaTitulo = styled.div`
 const Header = styled.h1`
   width: 100%;
   text-align: center;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   font-size: 58px;
   color: #0070c0;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 3px;
 
   padding-bottom: 12px;
   border-bottom: 5px solid #00b0f0;
 `;
 
+/* position: relative pra ficar acima do FundoParque (que é position:absolute
+   e, sem isso, pintaria por cima do conteúdo estático). */
 const AreaConteudo = styled.main`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 200px;
+  position: relative;
+  z-index: 1;
 `;
 
 const CaixaOpcoes = styled.div`
@@ -123,9 +143,10 @@ const CaixaOpcoes = styled.div`
 `;
 
 const SubTitulo = styled.h2`
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   font-size: 36px;
   color: #0070c0;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 15px;
   text-transform: uppercase;
   text-align: center;
@@ -136,8 +157,9 @@ const RotuloOpcoes = styled.p`
   align-items: center;
   gap: 10px;
 
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -163,19 +185,19 @@ const BotaoNivel = styled.button`
   font-size: 40px;
   padding: 45px;
   border-radius: 60px;
-  font-family: 'Comic Sans MS', sans-serif;
-  font-weight: bold;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
+  font-weight: 600;
   color: white;
   text-transform: uppercase;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  
-  background: ${props => props.Aberto 
-    ? "linear-gradient(180deg, #00b050 0%, #00e676 100%)" 
+
+  background: ${props => props.Aberto
+    ? "linear-gradient(180deg, #00b050 0%, #00e676 100%)"
     : "linear-gradient(180deg, #bdc3c7 0%, #95a5a6 100%)"};
-  
+
   border: 5px solid rgba(255, 255, 255, 0.9);
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
   cursor: ${props => props.Aberto ? "pointer" : "not-allowed"};
@@ -196,6 +218,7 @@ const NavegacaoRodape = styled.div`
   padding: 0 100px;
   position: absolute;
   bottom: 40px;
+  z-index: 1;
   display: flex;
   justify-content: flex-start;
   box-sizing: border-box;
@@ -206,8 +229,8 @@ const BotaoAcao = styled.button`
   font-size: 28px;
   padding: 15px 0;
   border-radius: 50px;
-  font-family: 'Comic Sans MS', sans-serif;
-  font-weight: bold;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
+  font-weight: 600;
   text-transform: uppercase;
   color: white;
   background: linear-gradient(180deg, #0070c0 0%, #00b0f0 100%);

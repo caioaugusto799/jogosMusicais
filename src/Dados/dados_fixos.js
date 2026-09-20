@@ -92,23 +92,23 @@ export const musicas_opcoes = [
     ativ: 1,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Parte1_FaM_AndBase.wav",
-  },
-  {
-    modo: "qual_e_o_par",
-    nivel: 1,
-    ativ: 1,
-    corr: 0,
-    opcao: "A",
-    arquivo: "CaiCaiBalao_Parte2_FaM_AndBase.wav",
+    arquivo: "TrechoDado_Ciranda_CANT_Parte1_FaM_AndBase.m4a",
   },
   {
     modo: "qual_e_o_par",
     nivel: 1,
     ativ: 1,
     corr: 1,
+    opcao: "A",
+    arquivo: "OpcaoA_Ciranda_CANT_Parte2_FaM_AndBase.m4a",
+  },
+  {
+    modo: "qual_e_o_par",
+    nivel: 1,
+    ativ: 1,
+    corr: 0,
     opcao: "B",
-    arquivo: "Ciranda_Parte2_FaM_AndBase.wav",
+    arquivo: "OpcaoB_CaiCaiBalao_CANT_Parte2_AndBase.m4a",
   },
 
   // Encontre o Par NÍVEL I Atividade 2
@@ -118,7 +118,7 @@ export const musicas_opcoes = [
     ativ: 2,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Parte1_FaM_AndBase.wav",
+    arquivo: "TrechoDado_Ciranda_CANT_Parte1_FaM_AndBase.m4a",
   },
   {
     modo: "qual_e_o_par",
@@ -126,23 +126,23 @@ export const musicas_opcoes = [
     ativ: 2,
     corr: 0,
     opcao: "A",
-    arquivo: "ParabensVoce_Parte2_FaM_AndBase.wav",
-  },
-  {
-    modo: "qual_e_o_par",
-    nivel: 1,
-    ativ: 2,
-    corr: 1,
-    opcao: "B",
-    arquivo: "Ciranda_Parte2_FaM_AndBase.wav",
+    arquivo: "OpcaoA_ParabensVoce_CANT_Parte2_AndBase.m4a",
   },
   {
     modo: "qual_e_o_par",
     nivel: 1,
     ativ: 2,
     corr: 0,
+    opcao: "B",
+    arquivo: "OpcaoB_CaiCaiBalao_CANT_Parte2_AndBase.m4a",
+  },
+  {
+    modo: "qual_e_o_par",
+    nivel: 1,
+    ativ: 2,
+    corr: 1,
     opcao: "C",
-    arquivo: "CaiCaiBalao_Parte2_FaM_AndBase.wav",
+    arquivo: "OpcaoC_Ciranda_CANT_Parte2_FaM_AndBase.m4a",
   },
 
   // Encontre o Par NÍVEL I Atividade 3
@@ -152,7 +152,7 @@ export const musicas_opcoes = [
     ativ: 3,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Parte1_FaM_AndBase.wav",
+    arquivo: "TrechoDado_Ciranda_CANT_Parte1_FaM_AndBase.m4a",
   },
   {
     modo: "qual_e_o_par",
@@ -160,15 +160,15 @@ export const musicas_opcoes = [
     ativ: 3,
     corr: 0,
     opcao: "A",
-    arquivo: "SitioMario_Parte2_FaM_AndBase.wav",
+    arquivo: "OpcaoA_SitioMario_CANT_Parte2_AndBase.m4a",
   },
   {
     modo: "qual_e_o_par",
     nivel: 1,
     ativ: 3,
-    corr: 0,
+    corr: 1,
     opcao: "B",
-    arquivo: "CaiCaiBalao_Parte2_FaM_AndBase.wav",
+    arquivo: "OpcaoB_Ciranda_CANT_FaM_AndBase.m4a",
   },
   {
     modo: "qual_e_o_par",
@@ -176,15 +176,15 @@ export const musicas_opcoes = [
     ativ: 3,
     corr: 0,
     opcao: "C",
-    arquivo: "ParabensVoce_Parte2_FaM_AndBase.wav",
+    arquivo: "OpcaoC_ParabensVoce_CANT_Parte2_AndBase.m4a",
   },
   {
     modo: "qual_e_o_par",
     nivel: 1,
     ativ: 3,
-    corr: 1,
+    corr: 0,
     opcao: "D",
-    arquivo: "Ciranda_Parte2_FaM_AndBase.wav",
+    arquivo: "OpcaoD_CaiCaiBalao_CANT_Parte2_AndBase.m4a",
   },
 
   // Encontre o Par NÍVEL II Atividade 1
@@ -398,7 +398,7 @@ export const musicas_opcoes = [
     ativ: 1,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "TrechoDado_Ciranda_CANT_Parte1_FaM_AndBase.m4a",
   },
   {
     modo: "rapido_devagar",
@@ -406,7 +406,7 @@ export const musicas_opcoes = [
     ativ: 1,
     corr: 0,
     opcao: "A",
-    arquivo: "Ciranda_voztoc_DEVAGAR.wav",
+    arquivo: "OpcaoA_Ciranda_CANT_FaM_AndDev.m4a",
   },
   {
     modo: "rapido_devagar",
@@ -414,7 +414,7 @@ export const musicas_opcoes = [
     ativ: 1,
     corr: 1,
     opcao: "B",
-    arquivo: "Ciranda_voztoc_RAPIDO.wav",
+    arquivo: "OpcaoB_Ciranda_CANT_FaM_AndRap.m4a",
   },
 
   // Rápido ou Devagar NÍVEL I Atividade 2
@@ -424,7 +424,7 @@ export const musicas_opcoes = [
     ativ: 2,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "TrechoDado_Ciranda_CANT_Parte1_FaM_AndBase.m4a",
   },
   {
     modo: "rapido_devagar",
@@ -432,7 +432,7 @@ export const musicas_opcoes = [
     ativ: 2,
     corr: 1,
     opcao: "A",
-    arquivo: "Ciranda_voztoc_DEVAGAR.wav",
+    arquivo: "OpcaoA_Ciranda_CANT_FaM_AndDev.m4a",
   },
   {
     modo: "rapido_devagar",
@@ -440,7 +440,7 @@ export const musicas_opcoes = [
     ativ: 2,
     corr: 0,
     opcao: "B",
-    arquivo: "Ciranda_voztoc_RAPIDO.wav",
+    arquivo: "OpcaoB_Ciranda_CANT_FaM_AndRap.m4a",
   },
 
   // Rápido ou Devagar NÍVEL I Atividade 3
@@ -450,23 +450,23 @@ export const musicas_opcoes = [
     ativ: 3,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 1,
-    ativ: 3,
-    corr: 0,
-    opcao: "A",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "TrechoDado_Ciranda_CANT_Parte1_FaM_AndBase.m4a",
   },
   {
     modo: "rapido_devagar",
     nivel: 1,
     ativ: 3,
     corr: 1,
+    opcao: "A",
+    arquivo: "OpcaoA_Ciranda_CANT_FaM_AndRap.m4a",
+  },
+  {
+    modo: "rapido_devagar",
+    nivel: 1,
+    ativ: 3,
+    corr: 0,
     opcao: "B",
-    arquivo: "Ciranda_Comp_FaM_AndRap.wav",
+    arquivo: "OpcaoB_Ciranda_CANT_FaM_AndDev.m4a",
   },
   {
     modo: "rapido_devagar",
@@ -474,7 +474,7 @@ export const musicas_opcoes = [
     ativ: 3,
     corr: 0,
     opcao: "C",
-    arquivo: "Ciranda_Comp_FaM_AndDev.wav",
+    arquivo: "OpcaoC_Ciranda_CANT_FaM_AndBase.m4a",
   },
 
   // Rápido ou Devagar NÍVEL I Atividade 4
@@ -484,7 +484,7 @@ export const musicas_opcoes = [
     ativ: 4,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "TrechoDado_Ciranda_CANT_Parte1_FaM_AndBase.m4a",
   },
   {
     modo: "rapido_devagar",
@@ -492,23 +492,23 @@ export const musicas_opcoes = [
     ativ: 4,
     corr: 0,
     opcao: "A",
-    arquivo: "Ciranda_Comp_FaM_AndRap.wav",
-  },
-  {
-    modo: "rapido_devagar",
-    nivel: 1,
-    ativ: 4,
-    corr: 0,
-    opcao: "B",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "OpcaoA_Ciranda_CANT_FaM_AndRap.m4a",
   },
   {
     modo: "rapido_devagar",
     nivel: 1,
     ativ: 4,
     corr: 1,
+    opcao: "B",
+    arquivo: "OpcaoB_Ciranda_CANT_FaM_AndDev.m4a",
+  },
+  {
+    modo: "rapido_devagar",
+    nivel: 1,
+    ativ: 4,
+    corr: 0,
     opcao: "C",
-    arquivo: "Ciranda_Comp_FaM_AndDev.wav",
+    arquivo: "OpcaoC_Ciranda_CANT_FaM_AndBase.m4a",
   },
 
   // Rápido ou Devagar NÍVEL I Atividade 5
@@ -518,15 +518,15 @@ export const musicas_opcoes = [
     ativ: 5,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "TrechoDado_Ciranda_CANT_Parte1_FaM_AndBase.m4a",
   },
   {
     modo: "rapido_devagar",
     nivel: 1,
     ativ: 5,
-    corr: 1,
+    corr: 0,
     opcao: "A",
-    arquivo: "ParabensVoce_Parte2_FaM_AndBase.wav",
+    arquivo: "OpcaoA_Ciranda_ CANT_FaM_AndBase_Agu.m4a",
   },
   {
     modo: "rapido_devagar",
@@ -534,7 +534,7 @@ export const musicas_opcoes = [
     ativ: 5,
     corr: 0,
     opcao: "B",
-    arquivo: "ParabensVoce_Parte2_FaM_AndBase.wav",
+    arquivo: "OpcaoB_Ciranda_CANT_FaM_AndBase.m4a",
   },
   {
     modo: "rapido_devagar",
@@ -542,7 +542,7 @@ export const musicas_opcoes = [
     ativ: 5,
     corr: 1,
     opcao: "C",
-    arquivo: "Ciranda_Comp_FaM_AndRap.wav",
+    arquivo: "OpcaoC_Ciranda_CANT_FaM_AndRap.m4a",
   },
   {
     modo: "rapido_devagar",
@@ -550,7 +550,7 @@ export const musicas_opcoes = [
     ativ: 5,
     corr: 0,
     opcao: "D",
-    arquivo: "Ciranda_Comp_FaM_AndDev.wav",
+    arquivo: "OpcaoD_Ciranda_CANT_FaM_AndDev.m4a",
   },
 
   // Rápido ou Devagar NÍVEL I Atividade 6
@@ -560,7 +560,7 @@ export const musicas_opcoes = [
     ativ: 6,
     corr: 0,
     opcao: "P",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "TrechoDado_Ciranda_CANT_Parte1_FaM_AndBase.m4a",
   },
   {
     modo: "rapido_devagar",
@@ -568,7 +568,7 @@ export const musicas_opcoes = [
     ativ: 6,
     corr: 0,
     opcao: "A",
-    arquivo: "Ciranda_Comp_FaM_AndBase.wav",
+    arquivo: "OpcaoA_Ciranda_ CANT_FaM_AndBase_Grav.m4a",
   },
   {
     modo: "rapido_devagar",
@@ -576,7 +576,7 @@ export const musicas_opcoes = [
     ativ: 6,
     corr: 0,
     opcao: "B",
-    arquivo: "Ciranda_Comp_FaM_AndBase_Grav.wav",
+    arquivo: "OpcaoB_Ciranda_CANT_FaM_AndBase.m4a",
   },
   {
     modo: "rapido_devagar",
@@ -584,7 +584,7 @@ export const musicas_opcoes = [
     ativ: 6,
     corr: 0,
     opcao: "C",
-    arquivo: "Ciranda_Comp_FaM_AndRap.wav",
+    arquivo: "OpcaoC_Ciranda_CANT_FaM_AndRap.m4a",
   },
   {
     modo: "rapido_devagar",
@@ -592,7 +592,7 @@ export const musicas_opcoes = [
     ativ: 6,
     corr: 1,
     opcao: "D",
-    arquivo: "Ciranda_Comp_FaM_AndDev.wav",
+    arquivo: "OpcaoD_Ciranda_CANT_FaM_AndDev.m4a",
   },
 
   // Rápido ou Devagar NÍVEL II Atividade 1

@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 export default function TelaAtividades() {
   const handleExit = () => {
     if (window.confirm("Tem certeza de que deseja sair?")) {
-      window.close(); 
+      window.close();
       window.location.href = "/";
     }
   };
 
   return (
     <Container>
+      <FundoParque src="/Audios/Video/parque_loop_nuvens.gif" alt="" />
+
       <CaixaTitulo>
         <Header>Vamos Cirandar!</Header>
       </CaixaTitulo>
@@ -50,12 +52,13 @@ export default function TelaAtividades() {
         <Link to="/exemplos" style={{ textDecoration: 'none' }}>
           <BotaoAcao>Voltar</BotaoAcao>
         </Link>
-        
+
         <BotaoAcao onClick={handleExit}>Sair</BotaoAcao>
       </NavegacaoRodape>
     </Container>
   );
 }
+
 
 const Container = styled.div`
   width: 100%;
@@ -65,8 +68,22 @@ const Container = styled.div`
   background-color: #f0f8ff;
   position: relative;
   overflow: hidden;
+  font-family: 'Nunito', 'Comic Sans MS', sans-serif;
 `;
 
+/* Mesmo GIF em loop da TelaInicial (nuvens se movendo no parque), reaproveitado
+   aqui pra manter a mesma identidade visual entre as duas telas. Fica atrás de
+   tudo (z-index -1) — os cartões brancos de título e opções continuam com
+   fundo opaco próprio, então a legibilidade não depende de escurecer a
+   imagem. */
+const FundoParque = styled.img`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+`;
 
 const CaixaTitulo = styled.div`
   position: absolute;
@@ -84,11 +101,11 @@ const Header = styled.h1`
   width: 100%;
   text-align: center;
 
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   font-size: 58px;
   color: #0070c0;
-  font-family: 'Comic Sans MS', sans-serif;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 3px;
 
   padding-bottom: 12px;
@@ -102,6 +119,12 @@ const AreaConteudo = styled.div`
   justify-content: flex-start; /* Alinha o conteúdo começando pelo topo */
   align-items: center;
   padding-top: 200px; /* Dá espaço para o Header não cobrir os botões */
+
+  /* Precisa ser "positioned" (mesmo sem z-index explícito) pra ficar acima
+     do FundoParque: um elemento position:absolute sempre pinta por cima de
+     conteúdo estático do mesmo pai, independente da ordem no DOM. Sem isso,
+     o fundo cobriria os botões em vez de ficar atrás deles. */
+  position: relative;
 `;
 
 const CaixaOpcoes = styled.div`
@@ -121,9 +144,9 @@ const RotuloOpcoes = styled.p`
   align-items: center;
   gap: 10px;
 
-  font-family: 'Comic Sans MS', sans-serif;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -162,8 +185,8 @@ const BotaoJogo = styled.button`
   font-size: 34px;
   padding: 22px 35px;
   border-radius: 60px;
-  font-family: 'Comic Sans MS', sans-serif;
-  font-weight: bold;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
+  font-weight: 600;
   color: white;
   text-transform: uppercase;
   border: 6px solid rgba(255, 255, 255, 0.9);
@@ -206,8 +229,8 @@ const BotaoAcao = styled.button`
   font-size: 28px;
   padding: 15px 0;
   border-radius: 50px;
-  font-family: 'Comic Sans MS', sans-serif;
-  font-weight: bold;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
+  font-weight: 600;
   text-transform: uppercase;
   color: white;
   background: linear-gradient(180deg, #0070c0 0%, #00b0f0 100%);

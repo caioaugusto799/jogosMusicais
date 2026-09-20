@@ -83,17 +83,20 @@ export default function TelaAtividade() {
   // ==========================================
   if (infos.length === 0) {
     setCompletion(nomeAtividade, nivel);
-    
+
     return (
       <Container>
+        <FundoParque src="/Audios/Video/parque_loop_nuvens.gif" alt="" />
+        <Sobreposicao />
+
         <CaixaTitulo>
           <HeaderTitulo>Vamos Cirandar</HeaderTitulo>
         </CaixaTitulo>
-        
+
         <AreaConteudo>
           <CaixaVitoria>
             <TextoParabens>PARABÉNS!!!!</TextoParabens>
-            
+
             {nivel < 3 ? (
               <TextoConclusao>
                 VOCÊ FINALIZOU O <br/>
@@ -114,7 +117,7 @@ export default function TelaAtividade() {
           <Link to="/atividades" style={{ textDecoration: 'none' }} onClick={() => sound.pause()}>
             <BotaoAcao>Voltar</BotaoAcao>
           </Link>
-          
+
           {nivel < 3 ? (
             <Link to={`/atividade/${nomeAtividade}`} style={{ textDecoration: 'none' }} onClick={() => sound.pause()}>
               <BotaoVerde>Avançar</BotaoVerde>
@@ -133,7 +136,7 @@ export default function TelaAtividade() {
   // TELA DE JOGO
   // ==========================================
   const proxButton = () => {
-    if (!showFeedback || !isCorrect) return <></>; 
+    if (!showFeedback || !isCorrect) return <></>;
     return (
       <Link
         to={{ pathname: `/atividade/${nomeAtividade}/${nivel}/${Number(passo) + 1}` }}
@@ -147,6 +150,9 @@ export default function TelaAtividade() {
 
   return (
     <Container>
+      <FundoParque src="/Audios/Video/parque_loop_nuvens.gif" alt="" />
+      <Sobreposicao />
+
       <MarcadorPagina>{nivel}.{passo}</MarcadorPagina>
       <CaixaTitulo>
         <HeaderTitulo>Vamos Cirandar</HeaderTitulo>
@@ -173,19 +179,32 @@ export default function TelaAtividade() {
               <Pergunta>{texto}</Pergunta>
             </CaixaPergunta>
 
-            {mostrarDica && <TextoDica>💡 Preste atenção nessa opção</TextoDica>}
+            <TextoDica visivel={mostrarDica}>💡 Preste atenção nessa opção</TextoDica>
 
             <AlternativasContainer>
-              {infos.map((elemento) => (
-                <BotaoAlternativa
-                  key={elemento.opcao}
-                  selecionado={elemento === sel}
-                  dica={mostrarDica && elemento.corr === 1}
-                  onClick={() => playAudio(elemento, true)}
-                >
-                  {elemento.opcao}
-                </BotaoAlternativa>
-              ))}
+              {infos.map((elemento) => {
+                // Só a alternativa escolhida ganha cor de resultado, e só
+                // depois de confirmada — antes disso, "selecionado" apenas
+                // destaca em azul (neutro), sem antecipar se está certa.
+                const resultado =
+                  showFeedback && elemento === sel
+                    ? isCorrect
+                      ? "correto"
+                      : "errado"
+                    : null;
+
+                return (
+                  <BotaoAlternativa
+                    key={elemento.opcao}
+                    selecionado={elemento === sel}
+                    resultado={resultado}
+                    dica={mostrarDica && elemento.corr === 1}
+                    onClick={() => playAudio(elemento, true)}
+                  >
+                    {elemento.opcao}
+                  </BotaoAlternativa>
+                );
+              })}
             </AlternativasContainer>
 
             <AreaFeedback>
@@ -230,15 +249,42 @@ const Container = styled.div`
   background-color: #f0f8ff;
   position: relative;
   overflow: hidden;
-  font-family: 'Comic Sans MS', sans-serif;
+  font-family: 'Nunito', 'Comic Sans MS', sans-serif;
+`;
+
+/* Mesmo GIF de fundo usado em TelaInicial/TelaAtividades. z-index precisa
+   ser 0 (não -1): com -1 a imagem escapa pra trás do background-color do
+   Container e fica invisível — foi exatamente o bug que resolvemos na
+   TelaAtividades. */
+const FundoParque = styled.img`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+`;
+
+/* Veu translucido por cima do fundo: reduz saturacao/contraste da foto
+   pra nao competir com botoes/texto que ficam direto sobre a imagem
+   (sem cartao branco atras), como o A/B da tela de perguntas. */
+const Sobreposicao = styled.div`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(240, 248, 255, 0.35);
+  z-index: 0;
 `;
 
 const MarcadorPagina = styled.div`
   position: absolute;
   top: 30px;
   right: 40px;
+  z-index: 1;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   font-size: 38px;
-  font-weight: bold;
+  font-weight: 600;
   color: #0070c0;
   background: white;
   padding: 15px 30px;
@@ -252,6 +298,7 @@ const CaixaTitulo = styled.div`
   top: 30px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 1;
 
   background-color: #ffffff;
   border: 4px solid #0070c0;
@@ -262,16 +309,20 @@ const CaixaTitulo = styled.div`
 const HeaderTitulo = styled.h1`
   width: 100%;
   text-align: center;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   font-size: 42px;
   color: #0070c0;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 2px;
 
   padding-bottom: 8px;
   border-bottom: 4px solid #00b0f0;
 `;
 
+/* Precisa ser "positioned" (position: relative já basta) pra ficar acima do
+   FundoParque — do contrário, um elemento position:absolute sempre pinta
+   por cima de conteúdo estático do mesmo pai, cobrindo os cartões. */
 const AreaConteudo = styled.main`
   flex-grow: 1;
   display: flex;
@@ -280,12 +331,14 @@ const AreaConteudo = styled.main`
   justify-content: center; /* Centraliza o conteúdo principal */
   padding-top: 110px;
   padding-bottom: 100px;
+  position: relative;
+  z-index: 1;
 `;
 
 const SubTitulo = styled.h2`
   font-size: 35px;
   color: #00b050;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 25px;
 `;
 
@@ -305,9 +358,9 @@ const CaixaInstrucao = styled.div`
 `;
 
 const TextoConvite = styled.p`
-  font-family: 'Comic Sans MS', sans-serif;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   font-size: 30px;
-  font-weight: bold;
+  font-weight: 600;
   color: #0070c0;
 `;
 
@@ -329,8 +382,9 @@ const RotuloPergunta = styled.p`
   align-items: center;
   gap: 8px;
 
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -366,9 +420,10 @@ const CaixaVitoria = styled(CaixaInstrucao)`
 `;
 
 const TextoParabens = styled.p`
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   font-size: 80px;
   color: #ffcc00;
-  font-weight: bold;
+  font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
   margin-bottom: 20px;
 `;
@@ -377,9 +432,9 @@ const TextoConclusao = styled.div`
   font-size: 40px;
   text-align: center;
   color: #0070c0;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1.4;
-  
+
   .destaque-verde { color: #00b050; font-size: 50px; }
 `;
 
@@ -388,9 +443,9 @@ const BotaoOuvir = styled.button`
   align-items: center;
   gap: 5px;
 
-  font-family: 'Comic Sans MS', sans-serif;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   font-size: 32px;
-  font-weight: bold;
+  font-weight: 600;
   color: white;
   text-transform: uppercase;
 
@@ -412,10 +467,13 @@ const BotaoOuvir = styled.button`
   }
 `;
 
+// Sempre ocupa o mesmo espaço (fica só com opacidade 0 quando escondida)
+// pra não empurrar o resto do conteúdo — inclusive o botão "Confirmar" —
+// pra baixo bem na hora em que a dica aparece.
 const TextoDica = styled.p`
-  font-family: 'Comic Sans MS', sans-serif;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
   color: #ad8b00;
   background: #fff8e1;
   border: 3px solid #ffcc00;
@@ -423,14 +481,16 @@ const TextoDica = styled.p`
   padding: 10px 24px;
   margin-bottom: 20px;
 
-  animation: ${entrada} 0.5s ease-out;
-  animation-fill-mode: backwards;
+  opacity: ${(props) => (props.visivel ? 1 : 0)};
+  visibility: ${(props) => (props.visivel ? "visible" : "hidden")};
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
 `;
 
 const Pergunta = styled.p`
   font-size: 36px;
   color: #00b050;
-  font-weight: bold;
+  font-weight: 700;
   text-align: center;
 `;
 
@@ -441,18 +501,41 @@ const AlternativasContainer = styled.div`
   margin-bottom: 30px;
 `;
 
+// Cor por estado, nessa ordem de prioridade: resultado (depois de
+// confirmar) > selecionado (escolhida, ainda não confirmada) > neutro.
+// Verde e vermelho ficam reservados só pro resultado — não aparecem antes
+// de confirmar, pra não sugerir "certo/errado" antes da hora.
+function corDeFundo(props) {
+  if (props.resultado === "correto") return "linear-gradient(180deg, #00b050 0%, #00e676 100%)";
+  if (props.resultado === "errado") return "linear-gradient(180deg, #ff4757 0%, #ff6b81 100%)";
+  if (props.selecionado) return "linear-gradient(180deg, #0070c0 0%, #00b0f0 100%)";
+  return "#ffffff";
+}
+
+function corDoTexto(props) {
+  if (props.resultado || props.selecionado) return "white";
+  return "#0070c0";
+}
+
+function corDaBorda(props) {
+  if (props.resultado === "correto") return "6px solid #00b050";
+  if (props.resultado === "errado") return "6px solid #ff4757";
+  if (props.selecionado) return "6px solid #0070c0";
+  return "5px solid #0070c0";
+}
+
 const BotaoAlternativa = styled.button`
   font-size: 55px;
   width: 110px;
   height: 110px;
   border-radius: 30px;
-  font-family: 'Comic Sans MS', sans-serif;
-  font-weight: bold;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
+  font-weight: 600;
   cursor: pointer;
-  color: white;
-  background: linear-gradient(180deg, #00b050 0%, #00e676 100%);
-  border: ${(props) => (props.selecionado ? "6px solid #0070c0" : "5px solid white")};
-  box-shadow: ${(props) => (props.selecionado ? "0px 0px 0px 4px rgba(0, 112, 192, 0.3), 0px 10px 20px rgba(0, 0, 0, 0.25)" : "0px 10px 20px rgba(0, 0, 0, 0.25)")};
+  color: ${corDoTexto};
+  background: ${corDeFundo};
+  border: ${corDaBorda};
+  box-shadow: ${(props) => (props.selecionado ? "0px 0px 0px 4px rgba(0, 112, 192, 0.3), 0px 10px 20px rgba(0, 0, 0, 0.25)" : "0px 10px 20px rgba(0, 0, 0, 0.2)")};
   outline: ${(props) => (props.dica ? "6px solid #ffcc00" : "none")};
   outline-offset: 6px;
   transition: all 0.2s;
@@ -468,7 +551,7 @@ const AreaFeedback = styled.div`
 
 const Feedback = styled.div`
   font-size: 38px;
-  font-weight: bold;
+  font-weight: 700;
   color: ${(props) => (props.isCorrect ? "#00b050" : "#ff4757")};
   background: white;
   padding: 15px 40px;
@@ -476,14 +559,27 @@ const Feedback = styled.div`
   border: 4px solid ${(props) => (props.isCorrect ? "#00b050" : "#ff4757")};
 `;
 
+// A faixa em si cobre a largura inteira da tela, inclusive onde não tem
+// nenhum botão visível. Sem "pointer-events: none" aqui, essa área vazia
+// intercepta cliques destinados a qualquer coisa que fique por baixo dela
+// (como o botão "Confirmar", quando o conteúdo acima empurra ele pra perto
+// do rodapé) — o clique só "passava" na fatia exata onde o botão de baixo
+// escapava da faixa. Os botões dela mesma recebem "pointer-events: auto"
+// de volta pra continuarem clicáveis.
 const NavegacaoRodape = styled.div`
   width: 100%;
-  padding: 0 100px; 
+  padding: 0 100px;
   position: absolute;
   bottom: 40px;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
-  box-sizing: border-box; 
+  box-sizing: border-box;
+  pointer-events: none;
+
+  > * {
+    pointer-events: auto;
+  }
 `;
 
 const BotaoAcao = styled.button`
@@ -491,8 +587,8 @@ const BotaoAcao = styled.button`
   font-size: 30px;
   padding: 18px 0;
   border-radius: 50px;
-  font-family: 'Comic Sans MS', sans-serif;
-  font-weight: bold;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
+  font-weight: 600;
   text-transform: uppercase;
   color: white;
   background: linear-gradient(180deg, #0070c0 0%, #00b0f0 100%);
