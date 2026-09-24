@@ -92,7 +92,7 @@ export default function TelaExemplos() {
 
       <CaixaTitulo>
         <TituloExemplo>
-          Exemplo {variacao + 1}: <span>{exemplos[variacao].sup}</span> vs{" "}
+          Mais <span>{exemplos[variacao].sup}</span> vs Mais{" "}
           <span>{exemplos[variacao].inf}</span>
         </TituloExemplo>
       </CaixaTitulo>
@@ -146,7 +146,7 @@ const SobreposicaoRoda = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(240, 248, 255, 0.78);
+  background: rgba(240, 248, 255, 0.68);
   z-index: 1;
 `;
 

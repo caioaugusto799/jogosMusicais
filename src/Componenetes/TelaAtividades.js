@@ -1,7 +1,31 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 export default function TelaAtividades() {
+  const musicaRef = useRef(null);
+
+  // Mesmo padrão da TelaInicial: tenta tocar direto, com um listener de
+  // clique como reforço caso o navegador bloqueie o autoplay com som.
+  useEffect(() => {
+    const musica = musicaRef.current;
+    if (!musica) return undefined;
+
+    const tentarTocar = () => musica.play().catch(() => {});
+    tentarTocar();
+
+    const aoPrimeiraInteracao = () => {
+      tentarTocar();
+      window.removeEventListener("click", aoPrimeiraInteracao);
+    };
+    window.addEventListener("click", aoPrimeiraInteracao);
+
+    return () => {
+      window.removeEventListener("click", aoPrimeiraInteracao);
+      musica.pause();
+    };
+  }, []);
+
   const handleExit = () => {
     if (window.confirm("Tem certeza de que deseja sair?")) {
       window.close();
@@ -11,7 +35,10 @@ export default function TelaAtividades() {
 
   return (
     <Container>
+      <audio ref={musicaRef} src="/Audios/audio1_Ciranda_Comp_FaM_AndBase.wav" loop />
+
       <FundoParque src="/Audios/Video/parque_loop_nuvens.gif" alt="" />
+      <Sobreposicao />
 
       <CaixaTitulo>
         <Header>Vamos Cirandar!</Header>
@@ -24,21 +51,21 @@ export default function TelaAtividades() {
             Escolha uma atividade
           </RotuloOpcoes>
           <ListaJogos>
-            <Link to="/atividade/qual_e_o_par" style={{ textDecoration: 'none' }}>
+            <Link to="/atividade/qual_e_o_par" style={{ textDecoration: 'none' }} onClick={() => musicaRef.current?.pause()}>
               <BotaoJogo>
                 <ion-icon name="extension-puzzle-outline"></ion-icon>
                 <span>Qual é o par?</span>
               </BotaoJogo>
             </Link>
 
-            <Link to="/atividade/rapido_devagar" style={{ textDecoration: 'none' }}>
+            <Link to="/atividade/rapido_devagar" style={{ textDecoration: 'none' }} onClick={() => musicaRef.current?.pause()}>
               <BotaoJogo>
                 <ion-icon name="speedometer-outline"></ion-icon>
                 <span>Mais Rápido ou Mais Devagar</span>
               </BotaoJogo>
             </Link>
 
-            <Link to="/atividade/grave_agudo" style={{ textDecoration: 'none' }}>
+            <Link to="/atividade/grave_agudo" style={{ textDecoration: 'none' }} onClick={() => musicaRef.current?.pause()}>
               <BotaoJogo>
                 <ion-icon name="swap-vertical-outline"></ion-icon>
                 <span>Mais Agudo ou Mais Grave</span>
@@ -49,11 +76,11 @@ export default function TelaAtividades() {
       </AreaConteudo>
 
       <NavegacaoRodape>
-        <Link to="/exemplos" style={{ textDecoration: 'none' }}>
+        <Link to="/exemplos" style={{ textDecoration: 'none' }} onClick={() => musicaRef.current?.pause()}>
           <BotaoAcao>Voltar</BotaoAcao>
         </Link>
 
-        <BotaoAcao onClick={handleExit}>Sair</BotaoAcao>
+        <BotaoAcao onClick={() => { musicaRef.current?.pause(); handleExit(); }}>Sair</BotaoAcao>
       </NavegacaoRodape>
     </Container>
   );
@@ -82,6 +109,18 @@ const FundoParque = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 0;
+`;
+
+/* Veu translucido por cima do fundo: reduz saturacao/contraste da foto
+   pra nao competir com botoes/texto que ficam direto sobre a imagem
+   (sem cartao branco atras), como o A/B da tela de perguntas. */
+const Sobreposicao = styled.div`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(240, 248, 255, 0.35);
   z-index: 0;
 `;
 

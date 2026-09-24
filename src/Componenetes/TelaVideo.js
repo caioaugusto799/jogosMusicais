@@ -31,9 +31,9 @@ export default function TelaVideo() {
     }
   }, []);
 
-  const irParaExemplos = useCallback(() => {
+  const irParaCiranda = useCallback(() => {
     if (videoRef.current) videoRef.current.pause();
-    navigate("/exemplos");
+    navigate("/ciranda");
   }, [navigate]);
 
   const handleTocarManual = () => {
@@ -64,16 +64,16 @@ export default function TelaVideo() {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Enter") {
-        irParaExemplos();
+        irParaCiranda();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [irParaExemplos]);
+  }, [irParaCiranda]);
 
   return (
     <Container onClick={handleTelaClick}>
-      <Video ref={videoRef} autoPlay playsInline onEnded={irParaExemplos}>
+      <Video ref={videoRef} autoPlay playsInline onEnded={irParaCiranda}>
         <source src="/Audios/Video/VideoFinal.mp4" type="video/mp4" />
       </Video>
 
@@ -88,7 +88,7 @@ export default function TelaVideo() {
         <AvisoPular
           onClick={(e) => {
             e.stopPropagation();
-            irParaExemplos();
+            irParaCiranda();
           }}
         >
           <ion-icon name="play-skip-forward-outline"></ion-icon>

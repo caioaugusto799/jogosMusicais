@@ -1,12 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 export default function TelaInicial() {
   const navigate = useNavigate();
   const [saindo, setSaindo] = useState(false);
+  const musicaRef = useRef(null);
+
+  // Autoplay com som costuma ser bloqueado pelo navegador antes de qualquer
+  // interação do usuário — essa é a primeira tela do app, então é bem
+  // provável que a música só comece de fato no primeiro clique/toque. O
+  // catch cobre esse bloqueio silenciosamente; o listener de "click" cobre
+  // o caso de o autoplay falhar, tocando assim que o usuário interagir com
+  // qualquer parte da tela (não só o botão).
+  useEffect(() => {
+    const musica = musicaRef.current;
+    if (!musica) return undefined;
+
+    const tentarTocar = () => musica.play().catch(() => {});
+    tentarTocar();
+
+    const aoPrimeiraInteracao = () => {
+      tentarTocar();
+      window.removeEventListener("click", aoPrimeiraInteracao);
+    };
+    window.addEventListener("click", aoPrimeiraInteracao);
+
+    return () => {
+      window.removeEventListener("click", aoPrimeiraInteracao);
+      musica.pause();
+    };
+  }, []);
 
   const handleJogar = () => {
+    if (musicaRef.current) musicaRef.current.pause();
     setSaindo(true);
     // Espera o fade para preto terminar antes de trocar de tela
     setTimeout(() => {
@@ -16,6 +43,8 @@ export default function TelaInicial() {
 
   return (
     <Container>
+      <audio ref={musicaRef} src="/Audios/audio1_Ciranda_Comp_FaM_AndBase.wav" loop />
+
       <FundoGif src="/Audios/Video/parque_loop_nuvens.gif" alt="" />
       <Sobreposicao />
 
@@ -56,7 +85,7 @@ const Sobreposicao = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(240, 248, 255, 0.45);
+  background: rgba(240, 248, 255, 0.35);
   z-index: 1;
 `;
 

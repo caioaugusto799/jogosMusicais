@@ -1,5 +1,6 @@
 import TelaInicial from "./Componenetes/TelaInicial"
 import TelaVideo from "./Componenetes/TelaVideo"
+import TelaCiranda from "./Componenetes/TelaCiranda"
 import TelaExemplos from "./Componenetes/TelaExemplos"
 import TelaAtividades from "./Componenetes/TelaAtividades"
 import TelaNiveis from "./Componenetes/TelaNiveis"
@@ -12,6 +13,7 @@ export default function App(){
             <Routes>
                 <Route path="/" element={<TelaInicial />} />
                 <Route path="/video" element={<TelaVideo />}/>
+                <Route path="/ciranda" element={<TelaCiranda />}/>
                 <Route path="/exemplos" element={<TelaExemplos />}/>
                 <Route path="/atividades" element={<TelaAtividades />}/>
                 <Route path="/atividade/:nomeAtividade" element={<TelaNiveis />} />

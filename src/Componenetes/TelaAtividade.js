@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { getInfos, getAtividades, setCompletion } from "../Dados/Dados";
@@ -7,7 +7,15 @@ export default function TelaAtividade() {
   const { nomeAtividade, nivel, passo } = useParams();
   const [infos, def, texto] = getInfos(nomeAtividade, nivel, passo);
 
-  const [sound, setSound] = useState(new Audio());
+  // Ref, não state: nada na tela precisa re-renderizar quando o áudio troca,
+  // e usar ref evita qualquer chance de um onClick capturar uma referência
+  // desatualizada do <audio> atual (o que estado + closures pode fazer se
+  // dois cliques emendarem rápido demais).
+  const soundRef = useRef(new Audio());
+  // Mesma lógica pro efeito sonoro (palmas): precisa ser pausado de fora do
+  // clique que o disparou (ao avançar, voltar, tocar outro áudio, ou agora
+  // também em qualquer clique na tela).
+  const efeitoRef = useRef(null);
   const [sel, setSel] = useState(null);
   const [showConfirmButton, setShowConfirmButton] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
@@ -18,9 +26,10 @@ export default function TelaAtividade() {
 
   useEffect(() => {
     return () => {
-      if (sound) sound.pause();
+      soundRef.current.pause();
+      if (efeitoRef.current) efeitoRef.current.pause();
     };
-  }, [sound]);
+  }, []);
 
   // Reinicia a etapa (esconde pergunta/alternativas) sempre que o nível ou o passo mudam
   useEffect(() => {
@@ -41,13 +50,56 @@ export default function TelaAtividade() {
     return () => clearTimeout(timer);
   }, [ouvido, sel, nivel, passo]);
 
+  // Toca a comemoração assim que a tela de vitória é alcançada (uma vez por
+  // nível/atividade concluída — a dependência em nivel/passo evita repetir
+  // o som se o componente só re-renderizar sem trocar de etapa).
+  useEffect(() => {
+    if (infos.length !== 0) return undefined;
+    const comemoracao = new Audio("/Audios/comemoracao_roda_v2.mp3");
+    comemoracao.play();
+    return () => comemoracao.pause();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [infos.length, nomeAtividade, nivel]);
+
+  // Som curto de reforço positivo, separado do <audio> principal (que toca
+  // os trechos da música) pra não cortar um no outro. Depois de tocar, passa
+  // a escutar o PRÓXIMO clique em qualquer lugar da tela pra se auto-parar —
+  // mas só a partir do próximo tick (setTimeout 0), porque o clique que
+  // iniciou a palma (ex.: o próprio Confirmar) ainda está borbulhando pelo
+  // DOM nesse exato instante; escutar "click" antes disso pausaria a palma
+  // no mesmo clique que a começou.
+  function playEfeito(caminho, volume = 1) {
+    const efeito = new Audio(caminho);
+    efeito.volume = volume;
+    efeito.play();
+    efeitoRef.current = efeito;
+
+    setTimeout(() => {
+      if (efeitoRef.current !== efeito) return; // já foi trocado/parado
+      const aoClicarNaTela = () => pararEfeito();
+      efeito._aoClicarNaTela = aoClicarNaTela;
+      document.addEventListener("click", aoClicarNaTela, { once: true });
+    }, 0);
+  }
+
+  function pararEfeito() {
+    if (efeitoRef.current) {
+      if (efeitoRef.current._aoClicarNaTela) {
+        document.removeEventListener("click", efeitoRef.current._aoClicarNaTela);
+      }
+      efeitoRef.current.pause();
+      efeitoRef.current = null;
+    }
+  }
+
   function playAudio(elemento, isOpcao = false) {
     if (isOpcao) {
       setSel(elemento);
       setShowConfirmButton(true);
     }
     setShowFeedback(false);
-    sound.pause();
+    soundRef.current.pause();
+    pararEfeito();
 
     const musica = "/Audios/" + elemento.arquivo;
     const new_sound = new Audio(musica);
@@ -55,7 +107,7 @@ export default function TelaAtividade() {
       new_sound.onended = () => setOuvido(true);
     }
     new_sound.play();
-    setSound(new_sound);
+    soundRef.current = new_sound;
   }
 
   const ativText = () => {
@@ -114,16 +166,16 @@ export default function TelaAtividade() {
         </AreaConteudo>
 
         <NavegacaoRodape>
-          <Link to="/atividades" style={{ textDecoration: 'none' }} onClick={() => sound.pause()}>
+          <Link to="/atividades" style={{ textDecoration: 'none' }} onClick={() => { soundRef.current.pause(); pararEfeito(); }}>
             <BotaoAcao>Voltar</BotaoAcao>
           </Link>
 
           {nivel < 3 ? (
-            <Link to={`/atividade/${nomeAtividade}`} style={{ textDecoration: 'none' }} onClick={() => sound.pause()}>
+            <Link to={`/atividade/${nomeAtividade}`} style={{ textDecoration: 'none' }} onClick={() => { soundRef.current.pause(); pararEfeito(); }}>
               <BotaoVerde>Avançar</BotaoVerde>
             </Link>
           ) : (
-            <Link to="/atividades" style={{ textDecoration: 'none' }} onClick={() => sound.pause()}>
+            <Link to="/atividades" style={{ textDecoration: 'none' }} onClick={() => { soundRef.current.pause(); pararEfeito(); }}>
               <BotaoAcao>Parar</BotaoAcao>
             </Link>
           )}
@@ -141,7 +193,7 @@ export default function TelaAtividade() {
       <Link
         to={{ pathname: `/atividade/${nomeAtividade}/${nivel}/${Number(passo) + 1}` }}
         style={{ textDecoration: 'none' }}
-        onClick={() => { setSel(null); setShowConfirmButton(false); setShowFeedback(false); setIsCorrect(null); sound.pause(); }}
+        onClick={() => { setSel(null); setShowConfirmButton(false); setShowFeedback(false); setIsCorrect(null); soundRef.current.pause(); pararEfeito(); }}
       >
         <BotaoVerde>Próximo</BotaoVerde>
       </Link>
@@ -211,11 +263,16 @@ export default function TelaAtividade() {
               {showConfirmButton && (
                 <BotaoVerde
                   onClick={() => {
+                    soundRef.current.pause();
                     const correto = sel && sel.corr === 1;
                     setIsCorrect(correto);
                     setShowFeedback(true);
                     setShowConfirmButton(false);
-                    if (!correto) setErros((e) => e + 1);
+                    if (correto) {
+                      playEfeito("/Audios/palmas-entrada.mp3", 0.5);
+                    } else {
+                      setErros((e) => e + 1);
+                    }
                   }}
                 >
                   Confirmar
@@ -228,7 +285,7 @@ export default function TelaAtividade() {
       </AreaConteudo>
 
       <NavegacaoRodape>
-        <Link to="/atividades" style={{ textDecoration: 'none' }} onClick={() => sound.pause()}>
+        <Link to="/atividades" style={{ textDecoration: 'none' }} onClick={() => { soundRef.current.pause(); pararEfeito(); }}>
           <BotaoAcao>Voltar</BotaoAcao>
         </Link>
         {proxButton()}
